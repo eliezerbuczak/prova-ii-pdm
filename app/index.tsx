@@ -3,10 +3,10 @@ import React, {useEffect, useState} from "react";
 import FullScreen from "../components/containers/FullScreen";
 import Logo from "../components/ui/Logo";
 import ButtonEntrar from "../components/ui/ButtonEntrar";
-import Loading from "../components/ui/Loading";
 import {router} from "expo-router";
 import {ActionSheetProvider} from '@expo/react-native-action-sheet';
 import useAuth from "../firebase/hooks/useAuth";
+import InputText from "../components/ui/InputText";
 
 export default function index() {
     const { user, login, loading } = useAuth();
@@ -30,24 +30,19 @@ export default function index() {
             <FullScreen>
                 <View className="items-center justify-center h-full">
                     <Logo/>
-                    <View className="w-full px-8">
-                        <Text className="text-lg">Usuário</Text>
-                        <TextInput className="border-2 border-black p-2 w-full rounded-lg"
-                                   value={email}
-                                   placeholder="Digite seu nome de usuário"
-                                   onChangeText={(text) => setEmail(text)}
-                        />
-                    </View>
-                    <View className=" w-full px-8">
-                        <Text className="text-lg">Senha</Text>
-                        <TextInput className="border-2 border-black p-2 w-full rounded-lg"
-                                   placeholder="Digite sua senha"
-                                   secureTextEntry={true}
-                                      value={password}
-                                        onChangeText={(text) => setPassword(text)}
-                        />
-
-                    </View>
+                    <InputText
+                        label="Usuário"
+                        value={email}
+                        placeholder="Digite seu nome de usuário"
+                        onChangeText={setEmail}
+                    />
+                    <InputText
+                        label="Senha"
+                        value={password}
+                        placeholder="Digite sua senha"
+                        secureTextEntry
+                        onChangeText={setPassword}
+                    />
                     <View className="mt-12">
                         <ButtonEntrar onPress={async ()=>{
                             try {

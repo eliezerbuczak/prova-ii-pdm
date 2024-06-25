@@ -19,6 +19,7 @@ import useAuth from "../../firebase/hooks/useAuth";
 import Pets from "../../types/Pets";
 import useCollection from "../../firebase/hooks/useCollection";
 import {Ionicons} from "@expo/vector-icons";
+import InputText from "../../components/ui/InputText";
 
 export default function Cars() {
     const {showActionSheetWithOptions} = useActionSheet();
@@ -68,21 +69,26 @@ export default function Cars() {
             <Header onPress={options}/>
             <Stack.Screen options={{headerShown: false}}/>
             <View className="my-4 space-y-4 p-4">
-                <TextInput className="border-2 border-black p-2 w-full rounded-lg"
-                           value={forms.type}
-                           placeholder="Digite o tipo do animal"
-                           onChangeText={(text) => setForms({...forms, type: text})}
+                <InputText
+                    label="Tipo do Animal"
+                    value={forms.type}
+                    placeholder="Digite o tipo do animal"
+                    onChangeText={(text: any) => setForms({...forms, type: text})}
+                    secureTextEntry={false}
                 />
-                <TextInput className="border-2 border-black p-2 w-full rounded-lg"
-                           value={forms.name}
-                           placeholder="Digite o nome do animal"
-                           onChangeText={(text) => setForms({...forms, name: text})}
+                <InputText
+                    label="Tipo do Animal"
+                    value={forms.name}
+                    placeholder="Digite o nome do animal"
+                    onChangeText={(text: any) => setForms({...forms, name: text})}
+                    secureTextEntry={false}
                 />
-                <TextInput className="border-2 border-black p-2 w-full rounded-lg"
-                           value={forms.age.toString()}
-                           keyboardType="numeric"
-                           placeholder="Digite a idade do animal"
-                           onChangeText={(text) => setForms({...forms, age: Number(text)})}
+                <InputText
+                    label="Tipo do Animal"
+                    value={forms.age.toString()}
+                    placeholder="Digite o nome do animal"
+                    onChangeText={(text: any) => setForms({...forms, age: Number(text)})}
+                    secureTextEntry={false}
                 />
                 <TouchableOpacity onPress={async () => {
                     try {
