@@ -9,13 +9,16 @@ describe('Teste InputText', () => {
                 label="Usuário"
                 value="test@example.com"
                 placeholder="Digite seu nome de usuário"
-                onChangeText={() => {}}
-            />
+                onChangeText={() => {
+                }} secureTextEntry={undefined}            />
         );
         const testInstance = testRenderer.root;
 
         const input = testInstance.findByType('TextInput');
         expect(input.props.value).toBe('test@example.com');
+
+        const text = testInstance.findBy
+
     });
 
     it('verifica_alteracao_de_valor', () => {
